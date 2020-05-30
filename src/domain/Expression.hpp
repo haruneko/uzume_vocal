@@ -13,18 +13,34 @@ namespace uzume {
             double value;
         };
 
+        /**
+         * Expression represents an envelope, such as DYN, GEN, BRE and so on.
+         */
         class Expression final {
         public:
             Expression();
 
-            Expression(Expression &&rhs) noexcept;
+            Expression(std::vector<ExpressionEvent> events);
 
+            Expression(Expression &&rhs) noexcept = default;
+
+            Expression &operator=(const Expression &rhs) = default;
+
+            /**
+             * at returns a value at position.
+             */
             double at(double position) const;
 
+            /**
+             * insert an value change event on a position
+             */
             void insert(double position, double value);
 
+            /**
+             * deleteBetween deletes events between begin and end.
+             */
             void deleteBetween(double begin, double end);
-
+        private:
             std::vector<ExpressionEvent> events;
         };
     }

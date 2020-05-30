@@ -5,10 +5,6 @@
 
 using namespace uzume::vocal;
 
-SpectrumReference::SpectrumReference(SpectrumReference &&rhs) noexcept
-        : SpectrumReference(rhs.spectrogramId, rhs.msPosition, rhs.dynRatio) {
-}
-
 SpectrumReference::SpectrumReference(std::string id, double msPosition, double dyn)
         : spectrogramId(std::move(id)), msPosition(msPosition), dynRatio(dyn) {
 }

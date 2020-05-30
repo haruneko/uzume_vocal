@@ -5,17 +5,27 @@
 #define UZUME_VOCAL_SPECTROGRAM_REFERENCE_HPP
 
 #include <string>
+#include "SpectrumReference.hpp"
 
 namespace uzume {
     namespace vocal {
+        /**
+         * SpectrogramReference represents a reference to some spectrogram,
+         * This class contains not only the reference but also `cut out` and `stretch` of the spectrogram.
+         */
         class SpectrogramReference {
         public:
             SpectrogramReference() = default;
 
             SpectrogramReference(std::string id, double msLength, double msStartPosition, double msEndPosition);
 
-            SpectrogramReference(SpectrogramReference &&rhs) noexcept;
+            SpectrogramReference(SpectrogramReference &&rhs) noexcept = default;
 
+            SpectrogramReference &operator=(const SpectrogramReference &rhs) = default;
+
+            /**
+             * msSpectrogramPositionAt calculates corresponding position in a spectrogram.
+             */
             double msSpectrogramPositionAt(double ms) const;
 
             std::string spectrogramId;

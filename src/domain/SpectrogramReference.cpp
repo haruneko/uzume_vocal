@@ -5,10 +5,6 @@
 
 using namespace uzume::vocal;
 
-SpectrogramReference::SpectrogramReference(SpectrogramReference &&rhs) noexcept
-        : SpectrogramReference(rhs.spectrogramId, rhs.msLength, rhs.msStartPosition, rhs.msEndPosition) {
-}
-
 SpectrogramReference::SpectrogramReference(std::string id, double msLength, double msStartPosition,
                                            double msEndPosition)
         : spectrogramId(std::move(id)), msLength(msLength), msStartPosition(msStartPosition),

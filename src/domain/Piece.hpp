@@ -10,13 +10,36 @@
 
 namespace uzume {
     namespace vocal {
+        /**
+         * Piece of a vocal track.
+         */
         class Piece final {
         public:
             Piece() = default;
 
-            Piece(Piece &&other) noexcept;
+            Piece(Piece &&rhs) = default;
 
+            Piece(SpectrogramReference reference, Expression dynamics, double msPosition);
+
+            Piece &operator=(const Piece &rhs) = default;
+
+            /**
+             * at returns a spectrum at ms [milli seconds].
+             */
             SpectrumReference at(double ms) const;
+
+            /**
+             * msLength returns a length in milli seconds.
+             */
+            double msLength() const;
+
+            /**
+             * msEndPosition is an end position of this piece.
+             * This method simply returns (position + length).
+             */
+            double msEndPosition() const;
+
+            bool contains(double ms) const;
 
             SpectrogramReference reference;
             Expression dynamics;

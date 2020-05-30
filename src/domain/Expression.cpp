@@ -10,7 +10,10 @@ Expression::Expression() : events() {
     events.push_back(ExpressionEvent{0.0, 1.0});
 }
 
-Expression::Expression(Expression &&rhs) noexcept: events(std::move(rhs.events)) {
+Expression::Expression(std::vector<ExpressionEvent> events) : events(events) {
+    if (events.empty()) {
+        events.push_back(ExpressionEvent{0.0, 1.0});
+    }
 }
 
 void Expression::insert(double position, double value) {
@@ -22,7 +25,7 @@ void Expression::insert(double position, double value) {
         if (i->position == position) {
             i->value = value;
         } else {
-            events.insert(i, ExpressionEvent{position, value});
+            events.emplace(i, ExpressionEvent{position, value});
         }
     }
 }

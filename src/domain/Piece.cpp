@@ -6,8 +6,8 @@
 
 using namespace uzume::vocal;
 
-Piece::Piece(Piece &&other) noexcept
-        : reference(std::move(other.reference)), dynamics(std::move(other.dynamics)), msPosition(other.msPosition) {
+Piece::Piece(SpectrogramReference reference, Expression dynamics, double msPosition)
+        : reference(std::move(reference)), dynamics(std::move(dynamics)), msPosition(msPosition) {
 }
 
 SpectrumReference Piece::at(double ms) const {
@@ -15,4 +15,16 @@ SpectrumReference Piece::at(double ms) const {
             reference.spectrogramId,
             reference.msSpectrogramPositionAt(ms),
             dynamics.at((ms - msPosition) / reference.msLength));
+}
+
+double Piece::msLength() const {
+    return reference.msLength;
+}
+
+double Piece::msEndPosition() const {
+    return msPosition + msLength();
+}
+
+bool Piece::contains(double ms) const {
+    return msPosition <= ms && ms <= msEndPosition();
 }

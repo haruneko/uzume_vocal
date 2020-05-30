@@ -14,7 +14,7 @@ namespace uzume {
 
             SpectrumReference(std::string id, double msPosition, double dynRatio);
 
-            SpectrumReference(SpectrumReference &&rhs) noexcept;
+            SpectrumReference(SpectrumReference &&rhs) noexcept = default;
 
             std::string spectrogramId;
             double msPosition{ 0.0 };
