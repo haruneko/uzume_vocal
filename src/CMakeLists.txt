@@ -31,15 +31,17 @@ target_sources(uzume_vocal
         domain/SpectrogramReference.cpp
         domain/SpectrumReference.cpp
         domain/Track.cpp
+        gateways/SpectrogramNaiveRepository.cpp
         usecases/TrackSpectrogram.cpp)
 set_property(TARGET uzume_vocal
         PROPERTY PUBLIC_HEADER
-        gateways/SpectrogramRepository.hpp
         domain/Expression.hpp
         domain/Piece.hpp
         domain/SpectrogramReference.hpp
         domain/SpectrumReference.hpp
         domain/Track.hpp
+        gateways/SpectrogramRepository.hpp
+        gateways/SpectrogramNaiveRepository.hpp
         usecases/TrackSpectrogram.hpp)
 target_include_directories(uzume_vocal
         INTERFACE

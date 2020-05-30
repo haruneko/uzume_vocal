@@ -4,15 +4,18 @@
 #ifndef UZUME_VOCAL_SPECTROGRAM_REPOSITORY_HPP
 #define UZUME_VOCAL_SPECTROGRAM_REPOSITORY_HPP
 
-#include "dsp/Spectrogram.hpp"
+#include <string>
 
 namespace uzume {
+    namespace dsp {
+        class Spectrogram;
+    }
     namespace vocal {
         class SpectrtogramRepository {
         public:
-            virtual ~SpectrtogramRepository() = default;
+            virtual ~SpectrtogramRepository() noexcept = default;
 
-            virtual uzume::dsp::Spectrogram *find(std::string id) const = 0;
+            virtual const uzume::dsp::Spectrogram *find(const std::string &id) const = 0;
         };
     }
 }
