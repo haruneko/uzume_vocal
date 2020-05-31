@@ -7,3 +7,5 @@ project(uzume_vocal_root)
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(src)
+
+add_subdirectory(test)

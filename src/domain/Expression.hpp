@@ -4,6 +4,7 @@
 #ifndef UZUME_VOCAL_EXPRESSION_HPP
 #define UZUME_VOCAL_EXPRESSION_HPP
 
+#include <string>
 #include <vector>
 
 namespace uzume {
@@ -40,6 +41,8 @@ namespace uzume {
              * deleteBetween deletes events between begin and end.
              */
             void deleteBetween(double begin, double end);
+
+            std::string toString() const;
         private:
             std::vector<ExpressionEvent> events;
         };

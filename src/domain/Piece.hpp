@@ -41,6 +41,8 @@ namespace uzume {
 
             bool contains(double ms) const;
 
+            std::string toString() const;
+
             SpectrogramReference reference;
             Expression dynamics;
             double msPosition{ 0.0 };

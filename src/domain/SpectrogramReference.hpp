@@ -28,6 +28,8 @@ namespace uzume {
              */
             double msSpectrogramPositionAt(double ms) const;
 
+            std::string toString() const;
+
             std::string spectrogramId;
             double msLength{0.0};
             double msStartPosition{0.0};

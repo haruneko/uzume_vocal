@@ -18,7 +18,7 @@ Expression::Expression(std::vector<ExpressionEvent> events) : events(events) {
 
 void Expression::insert(double position, double value) {
     auto i = std::find_if(events.begin(), events.end(),
-                          [position](const ExpressionEvent &e) { return e.position <= position; });
+                          [position](const ExpressionEvent &e) { return position <= e.position; });
     if (i == events.end()) {
         events.emplace_back(ExpressionEvent{position, value});
     } else {
@@ -43,11 +43,21 @@ void Expression::deleteBetween(double begin, double end) {
 double Expression::at(double position) const {
     auto i(std::find_if(events.begin(), events.end(),
                         [position](const ExpressionEvent &e) { return e.position > position; }));
-    if (i == events.begin() || (i == events.end() && (*i).position < position)) {
-        return (*i).value;
+    if (i == events.begin()) {
+        return i->value;
+    } else if (i == events.end()) {
+        return (i - 1)->value;
     } else {
         auto prev = i - 1;
-        double ratio = (position - (*prev).position) / ((*i).position - (*prev).position);
-        return (*prev).value * (1 - ratio) + (*i).value * ratio;
+        double ratio = (position - prev->position) / (i->position - prev->position);
+        return prev->value * (1 - ratio) + i->value * ratio;
     }
+}
+
+std::string Expression::toString() const {
+    std::string values;
+    for(const auto &e: events) {
+        values +="(" + std::to_string(e.position) + "," + std::to_string(e.value) + "),";
+    }
+    return "uzume::vocal::Expression(" + values + ")";
 }

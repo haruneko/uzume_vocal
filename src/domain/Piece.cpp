@@ -13,7 +13,7 @@ Piece::Piece(SpectrogramReference reference, Expression dynamics, double msPosit
 SpectrumReference Piece::at(double ms) const {
     return SpectrumReference(
             reference.spectrogramId,
-            reference.msSpectrogramPositionAt(ms),
+            reference.msSpectrogramPositionAt(ms - msPosition),
             dynamics.at((ms - msPosition) / reference.msLength));
 }
 
@@ -27,4 +27,11 @@ double Piece::msEndPosition() const {
 
 bool Piece::contains(double ms) const {
     return msPosition <= ms && ms <= msEndPosition();
+}
+
+std::string Piece::toString() const {
+    return "uzume::vocal::Piece(" +
+           reference.toString() + "," +
+           dynamics.toString() + "," +
+           std::to_string(msPosition) + ")";
 }

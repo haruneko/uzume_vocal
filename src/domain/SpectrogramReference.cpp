@@ -15,3 +15,11 @@ double SpectrogramReference::msSpectrogramPositionAt(double ms) const {
     double relativePosition = ms / msLength;
     return msStartPosition + (msEndPosition - msStartPosition) * relativePosition;
 }
+
+std::string SpectrogramReference::toString() const {
+    return "uzume::vocal::SpectrogramReference(" +
+           spectrogramId + "," +
+           std::to_string(msLength) + "," +
+           std::to_string(msStartPosition) + "," +
+           std::to_string(msEndPosition) + ")";
+}

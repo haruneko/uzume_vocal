@@ -18,6 +18,9 @@ std::vector<SpectrumReference> Track::at(double ms) const {
     std::vector<SpectrumReference> res;
     auto i(std::find_if(pieces.begin(), pieces.end(), [ms](const Piece &p) { return p.contains(ms); }));
     for (; i != pieces.end(); i++) {
+        if (!i->contains(ms)) {
+            break;
+        }
         res.emplace_back(i->at(ms));
     }
     return res;
@@ -25,10 +28,23 @@ std::vector<SpectrumReference> Track::at(double ms) const {
 
 void Track::insert(Piece p) {
     double ms = p.msPosition;
-    auto i(std::find_if(pieces.begin(), pieces.end(), [ms](const Piece &e) { return e.msPosition <= ms; }));
+    auto i(std::find_if(pieces.begin(), pieces.end(), [ms](const Piece &e) { return ms < e.msPosition; }));
     if (i == pieces.end()) {
         pieces.emplace_back(std::move(p));
     } else {
         pieces.emplace(i, std::move(p.reference), std::move(p.dynamics), p.msPosition);
     }
+}
+
+std::string Track::toString() const {
+    std::string piecesStr = "(";
+    for (const auto &p: pieces) {
+        piecesStr += "(" + p.toString() + "),";
+    }
+    piecesStr += ")";
+    return "uzume::vocal::Track(" +
+           piecesStr + "," +
+           gender.toString() + "," +
+           breathy.toString() + "," +
+           f0.toString() + ")";
 }

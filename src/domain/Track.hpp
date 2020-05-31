@@ -23,6 +23,8 @@ namespace uzume {
 
             std::vector<SpectrumReference> at(double ms) const;
 
+            std::string toString() const;
+
             Expression gender;
             Expression breathy;
 
