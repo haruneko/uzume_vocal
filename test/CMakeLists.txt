@@ -50,7 +50,7 @@ target_sources(uzume_vocal_test
 
 target_link_libraries(uzume_vocal_test
         PRIVATE
-        uzume_vocal
+        #uzume_vocal
         gtest
         gtest_main
         gmock)
