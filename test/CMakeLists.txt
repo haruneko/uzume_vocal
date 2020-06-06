@@ -44,13 +44,13 @@ endif()
 
 target_sources(uzume_vocal_test
         PRIVATE
-        domain/ExpressionTest.cpp
-        domain/SpectrogramReferenceTest.cpp
-        domain/TrackTest.cpp)
+        ExpressionTest.cpp
+        SpectrogramReferenceTest.cpp
+        TrackTest.cpp)
 
 target_link_libraries(uzume_vocal_test
         PRIVATE
-        #uzume_vocal
+        uzume_vocal
         gtest
         gtest_main
         gmock)

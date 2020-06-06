@@ -26,23 +26,23 @@ target_link_libraries(uzume_vocal PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/lib/libuzu
 target_include_directories(uzume_vocal PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_sources(uzume_vocal
         PRIVATE
-        domain/Expression.cpp
-        domain/Piece.cpp
-        domain/SpectrogramReference.cpp
-        domain/SpectrumReference.cpp
-        domain/Track.cpp
-        gateways/SpectrogramNaiveRepository.cpp
-        usecases/TrackSpectrogram.cpp)
+        Expression.cpp
+        Piece.cpp
+        SpectrogramReference.cpp
+        SpectrumReference.cpp
+        Track.cpp
+        SpectrogramNaiveRepository.cpp
+        TrackSpectrogram.cpp)
 set_property(TARGET uzume_vocal
         PROPERTY PUBLIC_HEADER
-        domain/Expression.hpp
-        domain/Piece.hpp
-        domain/SpectrogramReference.hpp
-        domain/SpectrumReference.hpp
-        domain/Track.hpp
-        gateways/SpectrogramRepository.hpp
-        gateways/SpectrogramNaiveRepository.hpp
-        usecases/TrackSpectrogram.hpp)
+        Expression.hpp
+        Piece.hpp
+        SpectrogramReference.hpp
+        SpectrumReference.hpp
+        Track.hpp
+        SpectrogramRepository.hpp
+        SpectrogramNaiveRepository.hpp
+        TrackSpectrogram.hpp)
 target_include_directories(uzume_vocal
         INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

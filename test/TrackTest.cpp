@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 #include "gtest/gtest.h"
-#include "domain/Track.hpp"
+#include "Track.hpp"
 
 using namespace uzume::vocal;
 

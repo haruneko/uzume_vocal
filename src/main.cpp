@@ -7,9 +7,9 @@
 #include "dsp/Waveform.hpp"
 #include "dsp/WaveformSpectrogram.hpp"
 
-#include "domain/Track.hpp"
-#include "gateways/SpectrogramNaiveRepository.hpp"
-#include "usecases/TrackSpectrogram.hpp"
+#include "Track.hpp"
+#include "SpectrogramNaiveRepository.hpp"
+#include "TrackSpectrogram.hpp"
 
 using namespace uzume::dsp;
 using namespace uzume::vocal;

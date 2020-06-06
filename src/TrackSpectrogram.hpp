@@ -5,9 +5,9 @@
 #ifndef UZUME_VOCAL_TRACK_SPECTROGRAM_HPP
 #define UZUME_VOCAL_TRACK_SPECTROGRAM_HPP
 
-#include "domain/Track.hpp"
+#include "Track.hpp"
 #include "dsp/Spectrogram.hpp"
-#include "gateways/SpectrogramRepository.hpp"
+#include "SpectrogramRepository.hpp"
 
 namespace uzume {
     namespace vocal {

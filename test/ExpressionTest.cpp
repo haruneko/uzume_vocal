@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 
-#include "domain/Expression.hpp"
+#include "Expression.hpp"
 
 class ExpressionTest : public ::testing::Test {
 protected:
